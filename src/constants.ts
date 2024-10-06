@@ -1,6 +1,6 @@
 import { Track } from 'react-native-track-player';
 
-const musicList = {
+export const musicList = {
     Bamlehri : require('./assets/bamlehri.mp3'),
     dandelions : require('./assets/dandelions.mp3'),
     ruthdandelions : require('./assets/ruth-dandelions.mp3'),
