@@ -44,6 +44,7 @@ export default function MusicPlay() {
             </>
       )}
       keyExtractor={(item) => item.id.toString()}
+      showsHorizontalScrollIndicator={false}
       />
       <Songs track={trackdata} />
       <SongSlider />
