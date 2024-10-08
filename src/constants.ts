@@ -9,15 +9,7 @@ export const musicList = {
 
 export const listData: Track [] = [
     {
-        id: '1',
-        title: 'Bamlehri',
-        artist: 'Artist - Unknown',
-        album: 'Shiva',
-        url: musicList.Bamlehri,
-        artwork: 'https://i1.sndcdn.com/artworks-6Bh4Fe9f9HpNcMgu-8zR6Ag-t500x500.jpg',
-    },
-    {
-        id: '2',
+        id: 1,
         title: 'Dandelions',
         artist: 'Artist - Unknown',
         album: 'Ruth',
@@ -25,7 +17,15 @@ export const listData: Track [] = [
         artwork: 'https://i.ytimg.com/vi/taYxyE34jjY/maxresdefault.jpg',
     },
     {
-        id: '3',
+        id: 2,
+        title: 'Bamlehri',
+        artist: 'Artist - Unknown',
+        album: 'Shiva',
+        url: musicList.Bamlehri,
+        artwork: 'https://i1.sndcdn.com/artworks-6Bh4Fe9f9HpNcMgu-8zR6Ag-t500x500.jpg',
+    },
+    {
+        id: 3,
         title: 'Ruth Dandelions',
         artist: 'Artist - Unknown',
         album: 'Ruth',
@@ -33,7 +33,7 @@ export const listData: Track [] = [
         artwork: 'https://i.ytimg.com/vi/WgTMeICssXY/sddefault.jpg',
     },
     {
-        id: '4',
+        id: 4,
         title: 'Thousand Years',
         artist: 'Artist - Unknown',
         album: 'Christina',

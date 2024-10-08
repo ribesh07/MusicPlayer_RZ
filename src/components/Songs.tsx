@@ -15,7 +15,7 @@ export default function Songs({track} : SongProps) {
             {track?.title}
         </Text>
         <Text style={styles.artist}>
-            {track?.artist}   .  {track?.album}
+            {track?.artist}   ....  {track?.album}
         </Text>
       </View>
     </View>
@@ -24,6 +24,7 @@ export default function Songs({track} : SongProps) {
 
 const styles = StyleSheet.create({
   container: {
+    height : '20%',
     width: '90%',
     alignSelf: 'baseline',
     margin: 10,

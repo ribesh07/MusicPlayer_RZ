@@ -17,19 +17,6 @@ export async function playBackService() {
   });
 }
 
-export async function setupPlayer() {
-  let isSetup = false;
-  try {
-    await TrackPlayer.getCurrentTrack();
-    isSetup = true;
-  } catch (error) {
-    await TrackPlayer.setupPlayer();
-    isSetup = true;
-  } finally {
-    return isSetup;
-  }
-}
-
 export async function addTrack() {
   await TrackPlayer.add(musicList);
   await TrackPlayer.setRepeatMode(RepeatMode.Queue);

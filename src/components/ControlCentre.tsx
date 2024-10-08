@@ -1,40 +1,27 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable semi */
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Button, Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import TrackPlayer, { State , usePlaybackState  } from 'react-native-track-player'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import { playBackService } from '../../musicPlayerServices'
 
 
 export default function ControlCentre() {
     const playBackState = usePlaybackState()
     const state = playBackState.state
     const skipToNext = async () => {
+        console.log(state)
+                console.log('hi next')
         await TrackPlayer.skipToNext()
     }
     const skipToPrevious = async () => {
+        console.log(state)
+                console.log('hi prev')
         await TrackPlayer.skipToPrevious()
     }
 
     const togglePlay = async (playback : State | undefined) => {
-       try{
-        const queue = await TrackPlayer.getQueue();
-            //    .then((queue)=>{
-            //         const currentTrack = queue[0]
-            //         console.log(queue)
-            //         console.log(currentTrack)
-            //     })
-        const currentTrack = queue[0]
-        console.log(currentTrack)
-        if(currentTrack !== null){
-            if(playback === State.Playing || playback === State.Ready){
-                await TrackPlayer.play()
-            }else{
-                await TrackPlayer.pause()
-            }
-        }
-       }catch(error){
+       try{}catch(error){
         console.log(error)
        }
 
@@ -49,6 +36,8 @@ export default function ControlCentre() {
         </Pressable>
         <Pressable
             onPress={()=>{
+                console.log(state)
+                console.log('hi')
                 togglePlay(state)
             }}
         >
@@ -57,7 +46,6 @@ export default function ControlCentre() {
         <Pressable onPress={skipToNext}>
         <Icon style={styles.Icon} name = "skip-next" size={40} />
         </Pressable>
-      <Text>ControlCentre</Text>
     </View>
   )
 }
@@ -65,9 +53,11 @@ export default function ControlCentre() {
 const styles = StyleSheet.create({
     container: {
         marginBottom : 50,
+        width : '80%',
         flex :1,
         flexDirection: 'row',
         alignItems : 'center',
+        justifyContent : 'space-evenly',
     },
     Icon :{
         backgroundColor : 'grey',
