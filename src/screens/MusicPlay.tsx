@@ -1,6 +1,6 @@
-/* eslint-disable react-native/no-inline-styles */
+
 /* eslint-disable semi */
-import {  Dimensions, FlatList, Image, StyleSheet, Text, View } from 'react-native'
+import {  Dimensions, FlatList, Image, StyleSheet, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Track } from 'react-native-track-player'
 import SongSlider from '../components/SongSlider'
@@ -36,17 +36,17 @@ export default function MusicPlay() {
                         {item.artwork &&
                             <>
                                 <Image source={{uri: item.artwork?.toString()}} style={styles.albumImg} />
-                                <Text style={{fontSize:20,textAlign:'center'}}>{item.title}</Text>
+                                {/* <Text style={{fontSize:20,textAlign:'center'}}>{item.title}</Text> */}
                             </>
                         }
                     </View>
+                        <Songs track={item} />
                 </View>
             </>
       )}
       keyExtractor={(item) => item.id.toString()}
       showsHorizontalScrollIndicator={false}
       />
-      <Songs track={trackdata} />
       <SongSlider />
       <ControlCentre />
     </View>

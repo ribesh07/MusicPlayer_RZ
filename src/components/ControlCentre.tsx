@@ -1,14 +1,25 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable semi */
 import { Button, Pressable, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import TrackPlayer, { State , usePlaybackState  } from 'react-native-track-player'
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import { addTrack, setupPlayer } from '../../musicPlayerServices';
 
 
 export default function ControlCentre() {
+    const [isPlayerReady, setIsPlayerReady] = useState(false);
     const playBackState = usePlaybackState()
     const state = playBackState.state
+
+    useEffect(() => {
+        setupPlayer();
+        addTrack();
+        setIsPlayerReady(true);
+        return () => {
+          TrackPlayer.reset();
+        };
+      }, []);
     const skipToNext = async () => {
         console.log(state)
                 console.log('hi next')
@@ -21,7 +32,22 @@ export default function ControlCentre() {
     }
 
     const togglePlay = async (playback : State | undefined) => {
-       try{}catch(error){
+        // if (!isPlayerReady) {return;}
+       try{
+        const queue = await TrackPlayer.getQueue();
+        const currentTrack = queue[0]
+        console.log(currentTrack)
+        if(currentTrack !== null){
+            if(playback === State.Playing ){
+                await TrackPlayer.pause()
+            }else if( playback === State.Ready || playback === State.Stopped || playback === State.Paused ){
+                await TrackPlayer.play()
+            }
+            else{
+                await TrackPlayer.reset();
+            }
+        }
+       }catch(error){
         console.log(error)
        }
 

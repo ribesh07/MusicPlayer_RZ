@@ -9,36 +9,43 @@ export default function SongSlider() {
 
   return (
     <View style={styles.container}>
+        <View style={styles.timeContainer}>
+            <Text style={styles.timeText}>
+                {new Date(position * 1000).toISOString().substring(15,19)}
+            </Text>
+            <Text style={styles.timeText}>
+                {new Date((duration) * 1000).toISOString().substring(15,19)}
+            </Text>
+        </View>
         <Slider
             value={position}
             minimumValue={0}
             maximumValue={duration}
             thumbTintColor="green"
             maximumTrackTintColor="#fff"
-            style = {styles.container}
+            style = {styles.containerSlider}
         />
-        <View style={styles.timeContainer}>
-            <Text style={styles.timeText}>
-                {new Date(position * 1000).toISOString().substring(15,19)}
-            </Text>
-            <Text style={styles.timeText}>
-                {new Date((duration - position) * 1000).toISOString().substring(15,19)}
-            </Text>
-        </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
     container :{
-        width : 300,
-        height : 50,
+        width : '90%',
+        // height : 50,
         margin :10,
-        flexDirection : 'row',
+        flexDirection : 'column',
+    },
+    containerSlider :{
+        width : '90%',
+        height : 5,
+        margin : 5,
+        borderRadius : 5,
     },
     timeContainer :{
-        width:290,
-        flexDirection : 'row',
+        marginBottom : 14,
+        width : '100%',
+        flexDirection: 'row',
         justifyContent : 'space-between',
     },
     timeText :{
